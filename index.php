@@ -3,8 +3,10 @@
 <body>
 
 <?php
+//convert the JSON file into a string
 $string = file_get_contents("CalgarySchools.geojson");
-//echo $string;
+
+//decode the String into a PHP object
 $obj = json_decode($string, true);
 
 echo "<pre>";
