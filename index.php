@@ -3,7 +3,8 @@
 <body>
 
 <?php
-echo "My first PHP script!";
+$string = file_get_contents("CalgarySchools.geojson");
+echo $string;
 ?> 
 
 </body>
