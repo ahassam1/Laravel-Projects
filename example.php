@@ -3,8 +3,8 @@
 <body>
 
 <div id="demo">
-<h1>The XMLHttpRequest Object</h1>
-<input type="button" value="liked" id="testing" onclick="loadDoc();" />
+<h1>SENG 401 Lab 2</h1>
+<input type="button" value="Click this button activate AJAX" id="testing" onclick="loadDoc();" />
 
 </div>
 
