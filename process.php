@@ -18,8 +18,25 @@ $stringconvertedback = json_encode($obj, true);
 echo $stringconvertedback; 
 echo "</div>";
 
-
 ?> 
+
+<form action="action_page.php" method = "get">
+  Point 1 Latitude:<br>
+  <input type="number" name="p1x">
+  <br>
+  Point 1 Longitude:<br>
+  <input type="number" name="p1y">
+  <br><br>
+  Point 2 Latitude:<br>
+  <input type="number" name="p2x">
+  <br>
+  Point 2 Longitude:<br>
+  <input type="number" name="p2y">
+  <br><br>
+
+  <input type="submit" value="Go to part 3 of lab">
+</form> 
+
 
 </body>
 </html>
