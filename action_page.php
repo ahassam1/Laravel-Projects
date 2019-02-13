@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <body>
@@ -68,18 +67,23 @@ echo "<br>";
 
 function getBearing( $lat1_d, $lon1_d, $lat2_d, $lon2_d )
 {
+
+	//converts all the degrees to rads 
+
    $lat1 = deg2rad($lat1_d);
    $long1 = deg2rad($lon1_d);
    $lat2 = deg2rad($lat2_d);
    $long2 = deg2rad($lon2_d);
 
-$bearingradians = atan2(asin($long2-$long1)*cos($lat2),cos($lat1)*sin($lat2) - sin($lat1)*cos($lat2)*cos($long2-$long1)); 
-$bearingdegrees = rad2deg($bearingradians);
+	$bearingradians = atan2(asin($long2-$long1)*cos($lat2),cos($lat1)*sin($lat2) - sin($lat1)*cos($lat2)*cos($long2-$long1)); 
+	$bearingdegrees = rad2deg($bearingradians);
 
-if($bearingdegrees < 0)
-{
-	$breaingdegrees += 360;
-}
+	//converts all negative degrees to positive 
+
+	if($bearingdegrees < 0)
+	{
+		$breaingdegrees += 360;
+	}
 
 return $bearingdegrees;
 };
@@ -88,8 +92,34 @@ $bearingvalue = getBearing($p1y, $p1x, $p2y, $p2x);
 
 echo $bearingvalue;
 
+echo "<br>";
+echo "<br>";
+
+//based on https://stackoverflow.com/questions/14750275/haversine-formula-with-php
+
+function getHaversine($lat1_d, $long1_d, $lat2_d, $long2_d, $earthRadius = 6371)
+{
+  // convert from degrees to radians
+  $latFrom = deg2rad($lat1_d);
+  $lonFrom = deg2rad($long1_d);
+  $latTo = deg2rad($lat2_d);
+  $lonTo = deg2rad($long2_d);
+
+  $latDelta = $latTo - $latFrom;
+  $lonDelta = $lonTo - $lonFrom;
+
+  $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
+    cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+  return $angle * $earthRadius;
+}
+
+echo "<br>";
+echo "<br>";
+
+$haversinevalue = getHaversine($p1y, $p1x, $p2y, $p2x);
+
+echo $haversinevalue;
 
 ?>
-
 </body>
 </html>
