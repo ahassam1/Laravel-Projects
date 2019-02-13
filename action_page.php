@@ -61,6 +61,33 @@ function getQuadrant($x, $y)
 	}
 }
 
+echo "<br>";
+echo "<br>";
+
+//based on https://www.experts-exchange.com/questions/21094601/PHP-function-to-calculate-bearing-between-latitudes-and-longitudes.html
+
+function getBearing( $lat1_d, $lon1_d, $lat2_d, $lon2_d )
+{
+   $lat1 = deg2rad($lat1_d);
+   $long1 = deg2rad($lon1_d);
+   $lat2 = deg2rad($lat2_d);
+   $long2 = deg2rad($lon2_d);
+
+$bearingradians = atan2(asin($long2-$long1)*cos($lat2),cos($lat1)*sin($lat2) - sin($lat1)*cos($lat2)*cos($long2-$long1)); 
+$bearingdegrees = rad2deg($bearingradians);
+
+if($bearingdegrees < 0)
+{
+	$breaingdegrees += 360;
+}
+
+return $bearingdegrees;
+};
+
+$bearingvalue = getBearing($p1y, $p1x, $p2y, $p2x);
+
+echo $bearingvalue;
+
 
 ?>
 
