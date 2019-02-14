@@ -19,7 +19,7 @@ echo $stringconvertedback;
 echo "</div>";
 
 ?> 
-
+<div>
 <form action="action_page.php" method = "get">
   Point 1 Latitude:<br>
   <input type="number" name="p1x">
@@ -36,8 +36,10 @@ echo "</div>";
 
   <input type="submit" value="Go to part 3 of lab">
 </form>
+</div>
 
 <!-- the following JS is the stuff for AJAX part-->
+<div>
   Point 1 Latitude:<br>
   <input type="number" id="p1x" name="p1x">
   <br>
@@ -50,7 +52,9 @@ echo "</div>";
   Point 2 Longitude:<br>
   <input type="number" id="p2y" name="p2y">
   <br><br>
-  <button onclick="getCoordInfo()">Get part 4 of lab </button>
+  <input type="button" value="Go to Part 4" id="getcoords" onclick="getCoordInfo();" />
+</div>
+
 
 <div>
   COORDINATE 1:
@@ -67,32 +71,7 @@ echo "</div>";
 <p id="coord1"> </p>
 <p id="coord2"> </p>
 
-<script>
-function getCoordInfo() {
-  var xhttp = new XMLHttpRequest();
-  var p1x = document.getElementById("p1x").value;
-  var p1y = document.getElementById("p1y").value;
-  var p2x = document.getElementById("p2x").value;
-  var p2y = document.getElementById("p2y").value;
 
-  xhttp.onreadystatechange = function() 
-  {
-    if (this.readyState == 4 && this.status == 200) {
-      var result = $.parseJSON(this.responseText);
-
-      document.getElementById("coord1quad").innerHTML = this.responseText[0];
-      document.getElementById("coord2quad").innerHTML = this.responseText[1];
-
-      document.getElementById("bearing").innerHTML = this.responseText[2];
-      document.getElementById("haversine").innerHTML = this.responseText[3];
-    }
-  };
-
-  xhttp.open("GET", "action_page02.php?p1x=" + p1x + "p1y=" + p1y + "&p2x=" + p2x + "&p2y=" + p2y, true);
-  xhttp.send();
-}
-
-</script>
 
 
 

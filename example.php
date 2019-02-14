@@ -41,6 +41,34 @@ function loadDoc() {
   xhttp.open("GET", "process.php", true);
   xhttp.send();
 }
+
+function getCoordInfo() {
+  var xhttp = new XMLHttpRequest();
+  var p1x = document.getElementById("p1x").value;
+  var p1y = document.getElementById("p1y").value;
+  var p2x = document.getElementById("p2x").value;
+  var p2y = document.getElementById("p2y").value;
+
+
+  window.alert("Hello");
+
+  xhttp.onreadystatechange = function() 
+  {
+    if (this.readyState == 4 && this.status == 200) {
+      var result = $.parseJSON(this.responseText);
+
+      document.getElementById("coord1quad").innerHTML = this.responseText[0];
+      document.getElementById("coord2quad").innerHTML = this.responseText[1];
+
+      document.getElementById("bearing").innerHTML = this.responseText[2];
+      document.getElementById("haversine").innerHTML = this.responseText[3];
+    }
+  };
+
+  xhttp.open("GET", "action_page02.php?p1x=" + p1x + "p1y=" + p1y + "&p2x=" + p2x + "&p2y=" + p2y, true);
+  xhttp.send();
+}
+
 </script>
 </head>
 
