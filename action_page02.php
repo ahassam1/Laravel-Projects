@@ -82,7 +82,8 @@ $quadrant2 = getQuadrant($p2x, $p2y);
 $bearingvalue = getBearing($p1y, $p1x, $p2y, $p2x);
 $haversinevalue = getHaversine($p1y, $p1x, $p2y, $p2x);
 
-echo json_encode(array($quadrant1, $quadrant2, $bearingvalue, $haversinevalue));
+
+echo " Quadrant1: " . $quadrant1 . " Quadrant2: " . $quadrant2 . " Bearing: " . $bearingvalue . " Haversine: " . $haversinevalue;
 
 ?>
 </body>

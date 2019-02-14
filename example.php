@@ -55,17 +55,15 @@ function getCoordInfo() {
   xhttp.onreadystatechange = function() 
   {
     if (this.readyState == 4 && this.status == 200) {
-      var result = $.parseJSON(this.responseText);
 
-      document.getElementById("coord1quad").innerHTML = this.responseText[0];
-      document.getElementById("coord2quad").innerHTML = this.responseText[1];
+      document.getElementById("coord1quad").innerHTML = this.responseText;
+      
 
-      document.getElementById("bearing").innerHTML = this.responseText[2];
-      document.getElementById("haversine").innerHTML = this.responseText[3];
+
     }
   };
 
-  xhttp.open("GET", "action_page02.php?p1x=" + p1x + "p1y=" + p1y + "&p2x=" + p2x + "&p2y=" + p2y, true);
+  xhttp.open("GET", "action_page02.php?p1x=" + p1x + "&p1y=" + p1y + "&p2x=" + p2x + "&p2y=" + p2y, true);
   xhttp.send();
 }
 

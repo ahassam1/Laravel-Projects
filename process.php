@@ -57,20 +57,15 @@ echo "</div>";
 
 
 <div>
-  COORDINATE 1:
   <p id="coord1quad"> </p><br>
-  COORDINATE 2:
   <p id="coord2quad"> </p><br>
-  BEARING:
   <p id="bearing"> </p><br>
-  HAVERSINE:
   <p id="haversine"> </p><br>
 
 </div>
 
 <p id="coord1"> </p>
 <p id="coord2"> </p>
-
 
 
 
