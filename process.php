@@ -38,7 +38,6 @@ echo "</div>";
 </form>
 
 <!-- the following JS is the stuff for AJAX part-->
-<form method = "get">
   Point 1 Latitude:<br>
   <input type="number" id="p1x" name="p1x">
   <br>
@@ -51,9 +50,7 @@ echo "</div>";
   Point 2 Longitude:<br>
   <input type="number" id="p2y" name="p2y">
   <br><br>
-
   <button onclick="getCoordInfo()">Get part 4 of lab </button>
-</form>
 
 <div>
   COORDINATE 1:
