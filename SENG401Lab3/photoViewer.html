@@ -1,0 +1,86 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $(function() {
+    // Get the form.
+    var form = $('#ajax-contact');
+
+    // Get the messages div.
+    var photoArea = $('#photoArea');
+
+    // Set up an event listener for the contact form.
+    $(form).submit(function(event) {
+      // Stop the browser from submitting the form.
+      event.preventDefault();
+
+      // Serialize the form data.
+      var formData = $(form).serialize();
+
+      // Submit the form using AJAX.
+      $.ajax({
+          type: 'POST',
+          url: $(form).attr('action'),
+          data: formData
+      }).done(function(response) {
+        // Make sure that the photoArea div has the 'success' class.
+        $(photoArea).removeClass('error');
+        $(photoArea).addClass('success');
+
+        // Set the message text.
+        $(photoArea).text(response);
+
+        // Clear the form.
+        $('#name').val('');
+        $('#email').val('');
+        $('#message').val('');
+      }).fail(function(data) {
+        // Make sure that the photoArea div has the 'error' class.
+        $(photoArea).removeClass('success');
+        $(photoArea).addClass('error');
+
+        // Set the message text.
+        if (data.responseText !== '') {
+            $(photoArea).text(data.responseText);
+        } else {
+            $(photoArea).text('Oops! An error occured and your message could not be sent.');
+        }
+      });
+    });
+  });
+</script>
+</head>
+<body>
+
+<form id="ajax-contact" method="post" action="fetchPhotos.php">
+    <div class="field">
+        <label for="blLong">Bottom Left - Longitude:</label>
+        <input type="number" id="blLong" name="blLong" required>
+    </div>
+
+    <div class="field">
+        <label for="blLat">Bottom Left - Latitude:</label>
+        <input type="number" id="blLat" name="blLat" required>
+    </div>
+
+    <div class="field">
+        <label for="trLong">Top Right - Longitude:</label>
+        <input type="number" id="trLong" name="trLong" required>
+    </div>
+
+    <div class="field">
+        <label for="trLat">Top Right - Latitude:</label>
+        <input type="number" id="trLat" name="trLat" required>
+    </div>
+
+    <div class="field">
+        <button type="submit">Send</button>
+    </div>
+</form>
+
+<br>
+
+<div id="photoArea"><b>Display info will be listed here...</b></div>
+
+</body>
+</html>
