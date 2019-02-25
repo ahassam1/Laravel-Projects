@@ -19,9 +19,9 @@ th {text-align: left;}
 
 <?php
 $host='localhost';
-$db = 'SENG401'; //use pgadmin to create a database e.g. SENG401
+$db = 'postgres'; //use pgadmin to create a database e.g. SENG401
 $username = 'postgres'; //usually postgres
-$password = 'S3cr3T5'; //usually postgres
+$password = 'sql'; //usually postgres
 $port = 5432;
 $dsn = "pgsql:host=$host; port=$port; dbname=$db; user=$username; password=$password";
 
