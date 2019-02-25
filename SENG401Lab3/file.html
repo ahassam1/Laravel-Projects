@@ -1,0 +1,68 @@
+<html>
+<head>
+<script>
+function showSchools() {
+var mode = document.getElementById("displayMode").value;
+var sector = document.getElementById("sector").value;
+var keyword = document.getElementById("keyword").value;
+
+if (mode == "") {
+    document.getElementById("schoolText").innerHTML = "";
+    return;
+} else { 
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("schoolText").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("GET","searchSchools.php?mode=" + mode + "&sector=" + sector + "&keyword=" + keyword, true);
+    xmlhttp.send();
+}
+}
+
+</script>
+</head>
+<body>
+
+<form>
+<div class="field">
+        <label for="keyword">Keyword:</label>
+        <input type="text" id="keyword" name="keyword" value="">
+</div>
+
+<br>
+
+Display Mode: <br>
+<select name="displayMode" id="displayMode" onchange="showSchools()">
+  <option value="">Select a display mode:</option>
+  <option value="1">JSON</option>
+  <option value="2">XML</option>
+  <option value="3">Comma</option>
+  <option value="4">Table</option>
+</select>
+
+<br><br>
+
+Sector: <br>
+<select name="sector" id="sector" onchange="showSchools()">
+  <option value="">Select a sector:</option>
+  <option value="SW">SW</option>
+  <option value="NW">NW</option>
+  <option value="SE">SE</option>
+  <option value="NE">NE</option>
+</select>
+</form>
+
+<br>
+
+<div id="schoolText"><b>Display info will be listed here...</b></div>
+
+</body>
+</html>
