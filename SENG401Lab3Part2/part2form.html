@@ -1,5 +1,5 @@
 <html>
-<head>
+<body>
 
 <form>
 <div class="field">
@@ -21,9 +21,47 @@
         <label for="trlongitude">top right longitude</label>
         <input type="number" id="trlongitude" name="trlongitude">
 
+        <br> <br>
+
+        <label for="submit">submit</label>
+		<button type="button" id ="submit" onclick="showPics()">submit</button>
 
 
 </div>
+</body>
 
+
+<head>
+<script>
+
+function showPics() {
+
+var bllatitude = document.getElementById("bllatitude").value;
+var bllongitude = document.getElementById("bllongitude").value;
+var trlatitude = document.getElementById("trlatitude").value;
+var trlongitude = document.getElementById("trlongitude").value;
+
+
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+
+    xmlhttp.open("GET","part2.php?bllatitude=" + bllatitude + "&bllongitude=" + bllongitude + "&trlatitude=" + trlatitude + "&trlongitude=" + trlongitude, true);
+    xmlhttp.send();
+
+}
+
+</script>
 </head>
+
 </html>
