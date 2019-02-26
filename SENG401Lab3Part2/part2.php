@@ -1,12 +1,19 @@
 
 <?php
 
-echo "Made it here";
+$bllatitude = $_GET['bllatitude'];
+$bllongitude = $_GET['bllongitude'];
+$trlatitude = $_GET['trlatitude'];
+$trlongitude = $_GET['trlongitude'];
+$coordinate = $bllatitude . "," . $bllongitude . "," . $trlatitude . "," . $trlongitude;
+
+echo $coordinate;
+
 
 $params = array(
 'api_key' => 'b5c9f778f677db3c88acb12946f86530',
 'method' => 'flickr.photos.search',
-'bbox' => '-114,50,-113,51',
+'bbox' => $coordinate,
 'extras' => 'geo',
 'has_geo' => '1',
 'per_page' => '10',
