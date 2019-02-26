@@ -1,6 +1,8 @@
 
 <?php
 
+echo "Made it here";
+
 $params = array(
 'api_key' => 'b5c9f778f677db3c88acb12946f86530',
 'method' => 'flickr.photos.search',
