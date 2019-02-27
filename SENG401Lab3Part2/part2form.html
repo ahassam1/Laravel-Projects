@@ -49,6 +49,8 @@ var bllatitude = document.getElementById("bllatitude").value;
 var bllongitude = document.getElementById("bllongitude").value;
 var trlatitude = document.getElementById("trlatitude").value;
 var trlongitude = document.getElementById("trlongitude").value;
+var type = document.getElementById("type").value;
+
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -57,7 +59,7 @@ var trlongitude = document.getElementById("trlongitude").value;
     }
   };
 
-    xhttp.open("GET","part2.php?bllatitude=" + bllatitude + "&bllongitude=" + bllongitude + "&trlatitude=" + trlatitude + "&trlongitude=" + trlongitude, true);
+    xhttp.open("GET","part2.php?bllatitude=" + bllatitude + "&bllongitude=" + bllongitude + "&trlatitude=" + trlatitude + "&trlongitude=" + trlongitude + "&type=" + type, true);
     xhttp.send();
 
 }

@@ -5,8 +5,11 @@ $bllatitude = $_GET['bllatitude'];
 $bllongitude = $_GET['bllongitude'];
 $trlatitude = $_GET['trlatitude'];
 $trlongitude = $_GET['trlongitude'];
-$coordinate = $bllatitude . "," . $bllongitude . "," . $trlatitude . "," . $trlongitude;
+$coordinate = $bllongitude . "," . $bllatitude . "," . $trlongitude . "," . $trlatitude;
+$type = $_GET['type'];
 
+echo $type;
+echo "<br>";
 echo $coordinate;
 
 
@@ -35,13 +38,24 @@ $rsp = file_get_contents($url);
 $rsp = str_replace( 'jsonFlickrApi(', '', $rsp );
 $rsp = substr( $rsp, 0, strlen( $rsp ) );
 $rsp2 = json_decode($rsp, true);
-echo '<pre>';
-var_dump($rsp2);
-echo '</pre>';
 
-$photos = $rsp2['photos']['photo'];
-$imgsrc = 'https://farm'.$photos[0]["farm"].'.staticflickr.com/'.
-$photos[0]["server"] . '/'.$photos[0]["id"].'_'.$photos[0]["secret"].'.jpg';
-echo '<img src="'.$imgsrc.'">';
+if($type == "JSON")
+{
+	echo '<pre>';
+	var_dump($rsp2);
+	echo '</pre>';
+}
+if($type == "Image")
+{
+	for($i = 0; $i < 20; $i++)
+	{
+	$photos = $rsp2['photos']['photo'];
+	$imgsrc = 'https://farm'.$photos[$i]["farm"].'.staticflickr.com/'.
+	$photos[$i]["server"] . '/'.$photos[$i]["id"].'_'.$photos[$i]["secret"].'.jpg';
+	echo '<img src="'.$imgsrc.'">';
+	}
+
+}
+
 
 ?>
