@@ -11,15 +11,21 @@ $type = $_GET['type'];
 echo $type;
 echo "<br>";
 echo $coordinate;
+echo "<br>";
 
-
+if($bllatitude < -90 || $bllatitude > 90 || $bllongitude < -180 || $bllongitude > 180 || $trlatitude < -90 || $trlatitude > 90 || $trlongitude < -180 || $trlongitude > 180)
+{
+	echo "Out of bounds";
+}
+else
+{
 $params = array(
 'api_key' => 'b5c9f778f677db3c88acb12946f86530',
 'method' => 'flickr.photos.search',
 'bbox' => $coordinate,
 'extras' => 'geo',
 'has_geo' => '1',
-'per_page' => '10',
+'per_page' => '20',
 'page' => '1',
 'format' => 'json',
 'nojsoncallback' => '1',
@@ -55,6 +61,7 @@ if($type == "Image")
 	echo '<img src="'.$imgsrc.'">';
 	}
 
+}
 }
 
 
