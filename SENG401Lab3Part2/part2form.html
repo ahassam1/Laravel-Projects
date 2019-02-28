@@ -4,22 +4,22 @@
 <form>
 <div class="field">
         <label for="bllatitude">bottom left latitude</label>
-        <input type="number" id="bllatitude" name="bllatitude">
+        <input type="number" id="bllatitude" name="bllatitude" value="0" onkeyup="verify()">
 
         <br> <br>
 
         <label for="bllongitude">bottom left longitude</label>
-        <input type="number" id="bllongitude" name="bllongitude">
+        <input type="number" id="bllongitude" name="bllongitude" value="0" onkeyup="verify()">
 
         <br> <br>
         
         <label for="trlatitude">top right latitude</label>
-        <input type="number" id="trlatitude" name="trlatitude">
+        <input type="number" id="trlatitude" name="trlatitude" value="90" onkeyup="verify()">
 
         <br> <br>
 
         <label for="trlongitude">top right longitude</label>
-        <input type="number" id="trlongitude" name="trlongitude">
+        <input type="number" id="trlongitude" name="trlongitude" value="90" onkeyup="verify()">
 
         <br> <br>
 
@@ -30,13 +30,15 @@
 
         <br> <br>
 
-		<button type="button" id ="submit" onclick="showPics()">submit</button>
+		<button type="button" id="submit" onclick="showPics()">submit</button>
 
-		<p id="demo">Let AJAX change this text.</p>
+        <p id="warning"></p>
+		<p id="demo"></p>
 
 
 </div>
 </form>
+
 </body>
 
 
@@ -61,7 +63,28 @@ var type = document.getElementById("type").value;
 
     xhttp.open("GET","part2.php?bllatitude=" + bllatitude + "&bllongitude=" + bllongitude + "&trlatitude=" + trlatitude + "&trlongitude=" + trlongitude + "&type=" + type, true);
     xhttp.send();
+}
 
+function verify() {
+    var bllatitude = document.getElementById("bllatitude").value;
+    var bllongitude = document.getElementById("bllongitude").value;
+    var trlatitude = document.getElementById("trlatitude").value;
+    var trlongitude = document.getElementById("trlongitude").value;
+
+    if (bllatitude > 90 || bllatitude < -90 || trlatitude > 90 || trlatitude < -90) {
+        document.getElementById("warning").innerHTML = "Latitude values must be between -90 and 90.";
+        if (bllongitude > 180 || bllongitude < -180 || trlongitude > 180 || trlongitude < -180) {
+            document.getElementById("warning").innerHTML = "Longitude values must be between -180 and 180.";
+            if (bllongitude > trlongitude || bllatitude > trlatitude) {
+                document.getElementById("warning").innerHTML = "Left must be smaller than right; bottom must be smaller than top.";
+            }
+        }
+        document.getElementById("submit").style.display = "none";
+
+    } else {
+        document.getElementById("warning").innerHTML = "";
+        document.getElementById("submit").style.display = "block";
+    }
 }
 
 </script>
