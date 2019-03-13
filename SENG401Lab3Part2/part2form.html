@@ -70,20 +70,29 @@ function verify() {
     var bllongitude = document.getElementById("bllongitude").value;
     var trlatitude = document.getElementById("trlatitude").value;
     var trlongitude = document.getElementById("trlongitude").value;
+    var invalid = 0;
 
     if (bllatitude > 90 || bllatitude < -90 || trlatitude > 90 || trlatitude < -90) {
+        invalid = 1;
         document.getElementById("warning").innerHTML = "Latitude values must be between -90 and 90.";
-        if (bllongitude > 180 || bllongitude < -180 || trlongitude > 180 || trlongitude < -180) {
-            document.getElementById("warning").innerHTML = "Longitude values must be between -180 and 180.";
-            if (bllongitude > trlongitude || bllatitude > trlatitude) {
-                document.getElementById("warning").innerHTML = "Left must be smaller than right; bottom must be smaller than top.";
-            }
-        }
         document.getElementById("submit").style.display = "none";
 
-    } else {
+    }
+    else if (bllongitude > 180 || bllongitude < -180 || trlongitude > 180 || trlongitude < -180) {
+        invalid = 1;
+        document.getElementById("warning").innerHTML = "Longitude values must be between -180 and 180.";
+        document.getElementById("submit").style.display = "none";
+    }
+    else if (bllongitude > trlongitude || bllatitude > trlatitude) {
+        invalid = 1;
+        document.getElementById("warning").innerHTML = "Left must be smaller than right; bottom must be smaller than top.";
+        document.getElementById("submit").style.display = "none";
+
+    } 
+    else{
+        invalid = 0;
         document.getElementById("warning").innerHTML = "";
-        document.getElementById("submit").style.display = "block";
+        document.getElementById("submit").style.display = "block"
     }
 }
 
