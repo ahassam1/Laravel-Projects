@@ -1,0 +1,13 @@
+START SERVER:
+	php artisan serve
+	(ctrl c to stop)
+
+MAKE AUTH:
+	php artisan make:auth
+
+MAKE MIGRATE:
+	php artisan migrate
+
+MAKE MODEL:
+	php artisan make:model Course -rcm
+	php artisan make:model Lab -cm
