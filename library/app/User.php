@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Course;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -37,11 +38,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function subscription() {
-        return $this->hasMany(Subscription::class);
-    }
-
-    public function comment() {
-        return $this->hasMany(Comment::class);
+    public function courses() {
+        return $this->hasMany(Course::class);
     }
 }

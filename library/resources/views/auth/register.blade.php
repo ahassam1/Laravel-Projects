@@ -43,7 +43,7 @@
                             <label for="birthdate" class="col-md-4 col-form-label text-md-right">{{ __('Birthdate') }}</label>
 
                             <div class="col-md-6">
-                                <input id="birthdate" type="date" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ old('birthdate') }}" required autofocus>
+                                <input id="birthdate" type="date" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ old('birthdate') }}" required>
 
                                 @if ($errors->has('birthdate'))
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                             <label for="education_field" class="col-md-4 col-form-label text-md-right">{{ __('Education Field') }}</label>
 
                             <div class="col-md-6">
-                                <input id="education_field" type="text" class="form-control{{ $errors->has('education_field') ? ' is-invalid' : '' }}" name="education_field" value="{{ old('education_field') }}" required autofocus>
+                                <input id="education_field" type="text" class="form-control{{ $errors->has('education_field') ? ' is-invalid' : '' }}" name="education_field" value="{{ old('education_field') }}" required>
 
                                 @if ($errors->has('education_field'))
                                     <span class="invalid-feedback" role="alert">
