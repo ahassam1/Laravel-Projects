@@ -36,6 +36,14 @@ class LoginController extends Controller
         {
             return '/visitor';
         }
+        if($role == 'subscriber')
+        {
+            return '/subscriber';
+        }
+        if($role == 'admin')
+        {
+            return '/admin';
+        }
     }
 
     /**
