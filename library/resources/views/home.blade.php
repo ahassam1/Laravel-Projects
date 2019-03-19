@@ -14,7 +14,11 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in! <br>
+                    Welcome {{Auth::user()->name}}! <br>
+                    Your ID on this system is {{Auth::user()->id}}. <br>
+                    Your role is <span style="color:blue"> {{Auth::user()->role}}.
+
                 </div>
             </div>
         </div>
