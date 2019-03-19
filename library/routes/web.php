@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('comments', 'CommentsController@index');
+Route::get('comments/create', 'CommentsController@create');
+Route::post('comments', 'CommentsController@store');
+// wildcard should be last
+//Route::get('comments/{id}', 'CommentsController@show');
