@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Book;
 use App\Author;
+use App\Written_By;
 
 class VisitorsController extends Controller
 {
