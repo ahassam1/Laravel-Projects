@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in! <br>
+                    You are logged in the Visitor section! <br>
                     Welcome {{Auth::user()->name}}! <br>
                     Your ID on this system is {{Auth::user()->id}}. <br>
                     Your role is <span style="color:blue"> {{Auth::user()->role}}.
