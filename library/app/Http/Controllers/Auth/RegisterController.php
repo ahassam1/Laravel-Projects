@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
+
 
 class RegisterController extends Controller
 {
@@ -28,7 +30,18 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/visitor';
+
+    public function redirectTo() {
+    
+        if(Auth::user()->role == 'visitor')
+        {
+            return  '/visitor';
+        }
+        else
+        {
+            return '/visitor';
+        }
+    }
 
     /**
      * Create a new controller instance.
