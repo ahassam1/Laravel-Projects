@@ -10,7 +10,8 @@ use Carbon\Carbon;
 class CommentsController extends Controller
 {
 	public function index() {
-		$comments = Comment::all();
+		//$comments = Comment::all();
+		$comments = Comment::order_by('published_at', 'desc')->get();
 
 		return view('comments.index', compact('comments'));
 	}
@@ -29,9 +30,10 @@ class CommentsController extends Controller
     public function store() {
     	// maybe should pass userid, bookid to the thing?
     	$input = Request::all();
-    	$input['id'] = 1;
+
+    	// none of the below actually work
        	$input['user_id'] = 1;
-    	$input['book_id'] = 1;
+    	$input['book_id'] = 2;
     	$input['created_at'] = Carbon::now();
     	$input['updated_at'] = Carbon::now();
 

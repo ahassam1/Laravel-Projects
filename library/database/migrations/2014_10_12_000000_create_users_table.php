@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('role')->default('visitor');
             $table->date('birthdate');
             $table->string('education_field');
-            $table->timestamp('account_creation_timestamp')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
