@@ -6,15 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Author extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'id', 'name', 'timestamp',
-    ];
-
     public function book() {
     	return $this->hasMany(Book::class);
     }
