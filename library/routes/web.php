@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/visitor', 'VisitorsController@index')->name('visitor');
 Route::get('/admin', 'AdminController@index')->name('admin');
-
+Route::get('/subscriber', 'SubscriberController@index')->name('subscriber');
 
 Route::get('/comments', 'CommentsController@index');
 Route::get('/comments/create', 'CommentsController@create');
