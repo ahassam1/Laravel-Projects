@@ -22,19 +22,21 @@
                     <div>
                 <h1> Books </h1>
 
-                @foreach ($books as $book)
-                    <article>
-                       
-                        <h2> {{ $book->name }} </h2>
-                        <div class="body">
-                            <p>
-                                ISBN: {{ $book->isbn }} <br>
-                            </p>
-                            <img src="{{ $book->image }}" >
-                        </div>
-                        <button value="subscribe"> </button>
-                    </article>
-                @endforeach
+        @foreach ($books as $book)
+            <article>
+
+                <h2> {{ $book->name }} </h2>
+                <div class="body">
+                    <p>
+                        ISBN: {{ $book->isbn }} <br>
+                        Author: {{ $book->a_name }} <br>
+                    </p>
+                    <img src="{{ $book->image }}" >
+                </div>
+                <button value="subscribe"> </button>
+            </article>
+        @endforeach
+        
             </div>
 
                 </div>

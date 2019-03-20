@@ -13,7 +13,7 @@ class CreateWrittenByTable extends Migration
      */
     public function up()
     {
-        Schema::create('written_by', function (Blueprint $table) {
+        Schema::create('writtenby', function (Blueprint $table) {
             $table->integer('author_id');
             $table->integer('book_id');
         });
@@ -26,6 +26,6 @@ class CreateWrittenByTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('written_by');
+        Schema::dropIfExists('writtenby');
     }
 }

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Book;
 use App\Author;
-use App\Written_By;
+use App\WrittenBy;
+use DB;
+use App\Quotation;
 
 class VisitorsController extends Controller
 {
@@ -17,10 +19,18 @@ class VisitorsController extends Controller
 
     public function index()
     {
-        $books = Book::all();
-        $authors = Author::all();
-        //$written_by = Written_By::all();
+        $books = DB::table('Books');
+        $authors = DB::table('Author');
+        $writtenby = DB::table('WrittenBy');
 
-        return view('visitors', compact('books', 'authors'));
+        $written_by = DB::table('Books');
+        $authors = DB::table('Authors');
+        $authors -> renameColumn('name', 'a_name');
+
+        $books = DB::table('WrittenBy')
+            -> join('books', 'book_id', '=', 'id')
+            -> join('authors', 'author_id', '=', 'a_id');
+
+        return view('visitors', compact('writtenby'));
     }
 }

@@ -25,4 +25,3 @@ Route::post('/comments', 'CommentsController@store');
 // wildcard should be last
 //Route::get('comments/{id}', 'CommentsController@show');
 
-Route::get('/books', 'BooksController@index');

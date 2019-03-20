@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Written_By extends Model
+class WrittenBy extends Model
 {
  	public function book()
  	{
