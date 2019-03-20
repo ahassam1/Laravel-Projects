@@ -21,16 +21,15 @@ class VisitorsController extends Controller
     {
         $books = DB::table('Books');
         $authors = DB::table('Author');
-        $writtenby = DB::table('WrittenBy');
+        $writtenby = DB::table('writtenby');
 
-        $written_by = DB::table('Books');
-        $authors = DB::table('Authors');
-        $authors -> renameColumn('name', 'a_name');
+        //$authors -> renameColumn('name', 'a_name');
 
-        $books = DB::table('WrittenBy')
+        $data = DB::table('writtenby')
             -> join('books', 'book_id', '=', 'id')
-            -> join('authors', 'author_id', '=', 'a_id');
+            -> join('authors', 'author_id', '=', 'a_id')
+            -> get();
 
-        return view('visitors', compact('writtenby'));
+        return view('visitors', compact('data'));
     }
 }
