@@ -41,6 +41,14 @@ class BooksController extends Controller
 	}
 	public function sub($id, $role)
 	{
-		
+		$user_id = Auth::user->id();
+        $subscribedto = new SubscribedTo();
+
+        $subscribedto->user_id = $user_id;
+        $subscribedto->book_id = $id;
+        $subscribedto->save();
+
+        $url = 'books/' . $book_id;
+        return redirect($url);
 	}
 }
