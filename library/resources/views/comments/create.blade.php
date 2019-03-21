@@ -6,26 +6,17 @@
 
     <hr/>
 
-    {!! Form::open(['url' => 'comments']) !!}
-    <!--
-    <div class="form-group">
-        {!! Form::label('title', 'Title:') !!}
-        {!! Form::text('title', null, ['class' => 'form-control']) !!}
-    </div>
-	-->
+    
+    <form action = "{{route('comment_post', $book_id)}}" method = "POST">
+        {{ csrf_field() }}
+        <label>Submit Comment</label>
+        <div>
+            <input type="text" name="text">
+        </div>
 
-    <!-- Text Form Input -->
-    <div class="form-group">
-    	{!! Form::label('text', 'Text:') !!}
-    	{!! Form::textarea('text', null, ['class' => 'form-control']) !!}
-    </div>
-
-    <!-- Add Comment Form Input -->
-    <div class="form-group">
-    	{!! Form::submit('Add Article', ['class' => 'btn btn-primary form-control']) !!}
-    </div>
-
-    {!! Form::close() !!}
-
+        <div>
+            <button type='submit'>Submit Comment</button>
+        </div>
+    </form>
 
 @endsection

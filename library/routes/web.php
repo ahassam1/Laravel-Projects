@@ -19,9 +19,12 @@ Auth::routes();
 
 Route::get('/visitor', 'VisitorsController@index')->name('visitor');
 
-Route::get('/comments', 'CommentsController@index');
-Route::get('/comments/create', 'CommentsController@create');
-Route::post('/comments', 'CommentsController@store');
+Route::get('/books', 'BooksController@index');
+Route::get('/books/{id}', 'BooksController@show');
+
+Route::get('/comments/{book_id}', 'CommentsController@index');
+Route::post('/comments/{book_id}', ['as' => 'comment_post', 'uses' => 'CommentsController@store']);
+Route::get('/comments/create/{book_id}', ['as' => 'comment_create', 'uses' => 'CommentsController@create']);
 // wildcard should be last
 //Route::get('comments/{id}', 'CommentsController@show');
 

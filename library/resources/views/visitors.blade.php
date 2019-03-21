@@ -22,16 +22,16 @@
                     <div>
                 <h1> Books </h1>
 
-        @foreach ($data as $w)
+        @foreach ($data as $book)
             <article>
 
-                <h2> {{ $w->name }} </h2>
+                <h2> {{ $book->name }} </h2>
                 <div class="body">
                     <p>
-                        ISBN: {{ $w->isbn }} <br>
-                        Author: {{ $w->a_name }} <br>
+                        ISBN: {{ $book->isbn }} <br>
+                        Author: {{ $book->a_name }} <br>
                     </p>
-                    <img src="{{ $w->image }}" >
+                    <a href="/books/{{ $book->id }}"> <img src="{{ $book->image }}" > </a>
                 </div>
                 <button value="subscribe"> </button>
             </article>
