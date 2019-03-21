@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Author;
+use App\WrittenBy;
+
+
 use Illuminate\Http\Request;
 use DB;
 
@@ -10,8 +14,15 @@ class BooksController extends Controller
 {
 	public function index() {
 		$books = Book::all();
+		$authors = Author::all();
+		$writtenby = DB::table('writtenby');
 
-		return view('books.index', compact('books'));
+		$data = DB::table('writtenby')
+            -> join('books', 'book_id', '=', 'id')
+            -> join('authors', 'author_id', '=', 'a_id')
+            -> get();
+
+		return view('books.index', compact('data'));
 	}
 
 	public function show($id)

@@ -4,11 +4,16 @@
 
 	<h1> Books </h1>
 
-	@foreach ($books as $book)
+	@foreach ($data as $d)
 		<article>
-			<h2> {{ $book->name }} </h2>
+			<h2> {{ $d->name }} </h2>
+			<p>
+			ISBN: {{$d->isbn}} <br>
+			Author: {{$d->a_name}}
+			</p>
 			<div class="body">
-				<a href="/books/{{ $book->id }}"> <img src="{{ $book->image }}" > </a>
+				<a href="/books/{{ $d->id }}"> 
+				<img src="{{ $d->image }}" > </a>
 			</div>
 		</article>
 	@endforeach

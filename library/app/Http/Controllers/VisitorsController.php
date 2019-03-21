@@ -19,6 +19,7 @@ class VisitorsController extends Controller
 
     public function index()
     {
+        /*
         $books = DB::table('Books');
         $authors = DB::table('Author');
         $writtenby = DB::table('writtenby');
@@ -29,7 +30,7 @@ class VisitorsController extends Controller
             -> join('books', 'book_id', '=', 'id')
             -> join('authors', 'author_id', '=', 'a_id')
             -> get();
-
-        return view('visitors', compact('data'));
+        */
+        return view('visitors');
     }
 }
