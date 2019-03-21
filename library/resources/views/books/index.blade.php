@@ -8,7 +8,7 @@
 		<article>
 			<h2> {{ $book->name }} </h2>
 			<div class="body">
-				<img src="{{ $book->image }}" >
+				<a href="/books/{{ $book->id }}"> <img src="{{ $book->image }}" > </a>
 			</div>
 		</article>
 	@endforeach

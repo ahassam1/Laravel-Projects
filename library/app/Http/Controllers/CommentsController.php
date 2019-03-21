@@ -2,43 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Comment;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Requests;
 use Request;
 use Carbon\Carbon;
 
+use DB;
+
 class CommentsController extends Controller
 {
-	public function index() {
-		//$comments = Comment::all();
-		$comments = Comment::latest()->get();
+	public function index($book_id) {
+        $comments = DB::table('comments')->get();
+        $url = 'books/' . $book_id;
 
-		return view('comments.index', compact('comments'));
-	}
+        $comments = DB::table('comments')
+                ->where('book_id', $book_id)
+                ->get();
 
-	public function show($id) {
-		$comment = comment::findOrFail($id);
-
-		return view('comments.show', compact('comment'));
+		return view($url, compact('comments'));
 	}
     
-    public function create()
-    {
-        return view('comments.create');
+    public function create($book_id) {
+        return view('comments.create', compact('book_id'));
     }
 
-    public function store() {
-    	// maybe should pass userid, bookid to the thing?
-    	$input = Request::all();
+    public function store($book_id) {
+        echo "<script type='text/javascript'>alert('$book_id');</script>";
 
-    	// none of the below actually work
-       	$input['user_id'] = 1;
-    	$input['book_id'] = 2;
-    	$input['created_at'] = Carbon::now();
-    	$input['updated_at'] = Carbon::now();
+        $user_id = Auth::user()->id;
 
-    	Comment::create($input);
+        $comment = new Comment();
+        $comment->id = 192;
+        $comment->book_id = $book_id;
+        $comment->user_id = $user_id;
+        $comment->text = request('text');
+        $comment->created_at = Carbon::now()->toDateTimeString();
+        $comment->updated_at = Carbon::now()->toDateTimeString();
 
-    	return redirect('comments');
+        $comment->save();
+
+        $url = 'books/' . $book_id;
+
+        return redirect($url);
     }
 }
