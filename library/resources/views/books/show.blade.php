@@ -16,9 +16,13 @@
 		<a href="{{ route('comment_create', [$book->id]) }}">
 			<button> COMMENT </button>
 		</a>
+
+		@if
 		<a href="{{ route('sub_create', [$book->id, '']) }}">
 			<button> SUBSCRIBE </button>
 		</a>
+		
+
 	@endif
 
 	@foreach ($comments as $c)

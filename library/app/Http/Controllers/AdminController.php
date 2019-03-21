@@ -38,5 +38,6 @@ class AdminController extends Controller
 
         $users = DB::table('users')->get();
 
+        return view('admin', compact('users'));
     }
 }
