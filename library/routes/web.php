@@ -24,6 +24,9 @@ Route::get('/subscriber', 'SubscriberController@index')->name('subscriber');
 Route::get('/comments', 'CommentsController@index');
 Route::get('/comments/create', 'CommentsController@create');
 Route::post('/comments', 'CommentsController@store');
+
+Route::get('/{id}/{role}', ['as' => 'role_changer', 'uses' => 'AdminController@rolechanger']);
+
 // wildcard should be last
 //Route::get('comments/{id}', 'CommentsController@show');
 
