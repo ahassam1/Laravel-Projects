@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\SubscribedTo;
+use App\Subscription;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -45,14 +45,14 @@ class BooksController extends Controller
 		return view('books.show', compact('book', 'comments'));
 	}
 
-	public function sub($id)
+	public function sub($book_id)
 	{
 		$user_id = Auth::user()->id;
-        $subscribedto = new SubscribedTo();
 
-        $subscribedto->user_id = $user_id;
-        $subscribedto->book_id = $id;
-        $subscribedto->save();
+        $subscription = new Subscription();
+        $subscription->user_id = $user_id;
+        $subscription->book_id = $book_id;
+        $subscription->save();
 
         $url = 'books/' . $book_id;
         return redirect($url);
