@@ -16,7 +16,7 @@
 		<a href="{{ route('comment_create', [$book->id]) }}">
 			<button> COMMENT </button>
 		</a>
-		<a href="">
+		<a href="{{ route('sub_create', [$book->id, '']) }}">
 			<button> SUBSCRIBE </button>
 		</a>
 	@endif

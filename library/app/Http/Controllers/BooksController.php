@@ -39,4 +39,8 @@ class BooksController extends Controller
 
 		return view('books.show', compact('book', 'comments'));
 	}
+	public function sub($id, $role)
+	{
+		
+	}
 }
