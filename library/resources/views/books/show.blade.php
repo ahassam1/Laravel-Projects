@@ -17,11 +17,19 @@
 			<button> COMMENT </button>
 		</a>
 
-		<a href="{{ route('sub_create', [$book->id]) }}">
-			<button> SUBSCRIBE </button>
-		</a>
+		@php ($flag = false)
+		@foreach ($subscriptions as $s)
+			@if ($s)
+				@php ($flag = true)
+				@break
+			@endif
+		@endforeach
 
-
+		@if (! $flag)
+			<a href="{{ route('sub_create', [$book->id]) }}">
+				<button> SUBSCRIBE </button>
+			</a>
+		@endif
 	@endif
 
 	@foreach ($comments as $c)

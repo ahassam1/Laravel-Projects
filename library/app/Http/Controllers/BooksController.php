@@ -33,6 +33,7 @@ class BooksController extends Controller
 	public function show($id)
 	{
 		$book = Book::find($id);
+		$user_id = Auth::user()->id;
 
 		if (is_null($book)) {
 			abort(404);
@@ -42,7 +43,12 @@ class BooksController extends Controller
                 ->where('book_id', $id)
                 ->get();
 
-		return view('books.show', compact('book', 'comments'));
+		$subscriptions = DB::table('subscriptions')
+				-> where('book_id', $id)
+				-> where('user_id', $user_id)
+				-> get();
+
+		return view('books.show', compact('book', 'comments', 'subscriptions'));
 	}
 
 	public function sub($book_id)
