@@ -9,7 +9,7 @@
 	<div class="body">
 		<img src="{{ $book->image }}" >
 	</div>
-	
+
 	<br>
 
 	@if ((Auth::User()->role == 'admin') || (Auth::User()->role == 'subscriber'))
