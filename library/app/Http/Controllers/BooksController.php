@@ -41,7 +41,7 @@ class BooksController extends Controller
 	}
 	public function sub($id, $role)
 	{
-		$user_id = Auth::user->id();
+		$user_id = Auth::user()->id;
         $subscribedto = new SubscribedTo();
 
         $subscribedto->user_id = $user_id;
