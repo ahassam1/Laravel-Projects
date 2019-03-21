@@ -38,9 +38,5 @@ class AdminController extends Controller
 
         $users = DB::table('users')->get();
 
-        echo "<script type='text/javascript'>alert('$message');</script>";
-
-        return view('admin', compact('users'));
-
     }
 }

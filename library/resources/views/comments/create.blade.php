@@ -9,9 +9,9 @@
     
     <form action = "{{route('comment_post', $book_id)}}" method = "POST">
         {{ csrf_field() }}
-        <label>Submit Comment</label>
+        <label>Write a Comment!</label>
         <div>
-            <input type="text" name="text">
+            <input type="textarea" name="text">
         </div>
 
         <div>

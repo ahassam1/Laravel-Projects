@@ -33,12 +33,9 @@ class CommentsController extends Controller
     }
 
     public function store($book_id) {
-        echo "<script type='text/javascript'>alert('$book_id');</script>";
-
         $user_id = Auth::user()->id;
 
         $comment = new Comment();
-        $comment->id = 192;
         $comment->book_id = $book_id;
         $comment->user_id = $user_id;
         $comment->text = request('text');

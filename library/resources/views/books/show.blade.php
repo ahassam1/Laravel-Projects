@@ -12,9 +12,14 @@
 	
 	<br>
 
-	<a href="{{ route('comment_create', [$book->id]) }}">
-		<button> COMMENT </button>
-	</a>
+	@if ((Auth::User()->role == 'admin') || (Auth::User()->role == 'subscriber'))
+		<a href="{{ route('comment_create', [$book->id]) }}">
+			<button> COMMENT </button>
+		</a>
+		<a href="">
+			<button> SUBSCRIBE </button>
+		</a>
+	@endif
 
 	@foreach ($comments as $c)
 		<p>{{ $c->text }}</p>>
