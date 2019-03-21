@@ -17,11 +17,10 @@
 			<button> COMMENT </button>
 		</a>
 
-		@if
-		<a href="{{ route('sub_create', [$book->id, '']) }}">
+		<a href="{{ route('sub_create', [$book->id]) }}">
 			<button> SUBSCRIBE </button>
 		</a>
-		
+
 
 	@endif
 

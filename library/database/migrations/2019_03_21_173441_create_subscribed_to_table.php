@@ -13,7 +13,7 @@ class CreateSubscribedToTable extends Migration
      */
     public function up()
     {
-        Schema::create('subscribed_to', function (Blueprint $table) {
+        Schema::create('subscribedTo', function (Blueprint $table) {
             $table->integer('user_id');
             $table->integer('book_id');
         });
@@ -26,6 +26,6 @@ class CreateSubscribedToTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscribed_to');
+        Schema::dropIfExists('subscribedTo');
     }
 }

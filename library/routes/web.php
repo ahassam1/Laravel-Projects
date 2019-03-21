@@ -29,5 +29,5 @@ Route::get('/books/{id}', 'BooksController@show');
 Route::get('/comments/{book_id}', 'CommentsController@index');
 Route::post('/comments/{book_id}', ['as' => 'comment_post', 'uses' => 'CommentsController@store']);
 
-Route::get('/{id}/{role}', ['as' => 'sub_create', 'uses' => 'BooksController@sub']);
 Route::get('/{id}/{role}', ['as' => 'role_changer', 'uses' => 'AdminController@rolechanger']);
+Route::get('/{id}/', ['as' => 'sub_create', 'uses' => 'BooksController@sub']);
