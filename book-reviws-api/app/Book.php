@@ -16,4 +16,8 @@ class Book extends Model
       return $this->hasMany(Rating::class);
     }
 
+	protected $fillable = [
+        'user_id', 'title', 'description',
+    ];
+
 }
