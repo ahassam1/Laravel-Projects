@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRatingsTable extends Migration
+class CreateAuthorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateRatingsTable extends Migration
      */
     public function up()
     {
-      Schema::create('ratings', function (Blueprint $table) {
-        $table->increments('id');
-        $table->unsignedInteger('user_id');
-        $table->unsignedInteger('book_id');
-        $table->unsignedInteger('rating');
-        $table->timestamps();
-      });
+        Schema::create('authors', function (Blueprint $table) {
+            $table->bigIncrements('a_id');
+            $table->string('a_name');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -29,6 +27,6 @@ class CreateRatingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ratings');
+        Schema::dropIfExists('authors');
     }
 }

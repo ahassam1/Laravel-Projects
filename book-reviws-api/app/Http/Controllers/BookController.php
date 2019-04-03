@@ -21,7 +21,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return BookResource::collection(Book::with('ratings')->paginate(25));
+        return BookResource::collection(Book::with('writtenby')->paginate(25));
     }
 
     /**
