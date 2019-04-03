@@ -1,3 +1,29 @@
+<script>
+function getBook() {
+    var book_id = document.getElementById("book_id").value;
+
+    if (mode == "") {
+        document.getElementById("schoolText").innerHTML = "";
+        return;
+    } else { 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("schoolText").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","searchSchools.php?mode=" + mode + "&sector=" + sector + "&keyword=" + keyword, true);
+        xmlhttp.send();
+    }
+}
+</script>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
