@@ -31,3 +31,6 @@ Route::post('/comments/{book_id}', ['as' => 'comment_post', 'uses' => 'CommentsC
 
 Route::get('/{id}/{role}', ['as' => 'role_changer', 'uses' => 'AdminController@rolechanger']);
 Route::get('/{id}/', ['as' => 'sub_create', 'uses' => 'BooksController@sub']);
+
+Route::apiResource('books', 'BookController');
+Route::post('books/{book}', 'BookController@store');
