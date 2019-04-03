@@ -21,4 +21,4 @@ Route::post('register', 'AuthController@register');
 Route::post('login', 'AuthController@login');
 
 Route::apiResource('books', 'BookController');
-Route::post('books/{book}/ratings', 'RatingController@store');
+Route::apiResource('authors', 'AuthorController');
