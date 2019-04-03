@@ -13,4 +13,17 @@
 
 Route::get('/', function () {
     return view('welcome');
+<<<<<<< HEAD
 });
+=======
+});
+
+Route::get('/bookview', 'BookViewController@index');
+
+Route::post('/api/books', 'BookViewController@postform');
+
+
+//Route::post('api/books/{book_id}', ['as' => 'book_post', 'uses' => 'BookController@api']);
+
+
+>>>>>>> origin/ali2

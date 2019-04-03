@@ -17,11 +17,16 @@ class BookResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+<<<<<<< HEAD
             'ibsn' => $this->isbn,
             'publication_year' => $this->publication_year,
             'publisher' => $this->publisher,
             'subscription_status' => $this->subscription_status,
             'image' => $this->image,
+=======
+            'isbn' => $this->isbn,
+            'description' => $this->description,
+>>>>>>> origin/ali2
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at
         ];
