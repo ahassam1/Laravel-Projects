@@ -16,7 +16,7 @@ function showBook() {
             document.getElementById("bookinfo").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("GET","searchLibrary.php?book_id=" + book_id, true);
+    xmlhttp.open("GET","librarySearch.php?book_id=" + book_id, true);
     xmlhttp.send();
 }
 
@@ -33,7 +33,7 @@ function showAllBooks() {
             document.getElementById("bookinfo").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("GET","searchLibrary.php?book_id=books", true);
+    xmlhttp.open("GET","librarySearch.php?book_id=books", true);
     xmlhttp.send();
 }
 
@@ -50,7 +50,7 @@ function showAllAuthors() {
             document.getElementById("bookinfo").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("GET","searchLibrary.php?book_id=authors", true);
+    xmlhttp.open("GET","librarySearch.php?book_id=authors", true);
     xmlhttp.send();
 }
 

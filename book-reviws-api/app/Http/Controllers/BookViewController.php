@@ -12,12 +12,14 @@ class BookViewController extends Controller
     {
         return view('bookview');
     }
+    /*
     public function postform(Request $request)
     {
         $data = $request->books;
-        return Response::json(array(
-                    'success' => true,
+        return Response::array(
+
                     'data'   => $data
                 )); 
     }
+    */
 }

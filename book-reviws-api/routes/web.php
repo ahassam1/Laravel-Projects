@@ -12,10 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('LibraryFind');
 });
 
 Route::get('/bookview', 'BookViewController@index');
-Route::post('/api/books', 'BookViewController@postform');
+//Route::post('/api/books', 'BookViewController@postform');
 
 Route::get('searchLibrary/{book}');

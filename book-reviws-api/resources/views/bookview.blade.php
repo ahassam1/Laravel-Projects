@@ -22,12 +22,15 @@
                                             }
                                         });
                                    $.ajax({
+                                        type: 'GET',
                                         url: '/api/books',
-                                        type: 'POST',
-                                        data: { "books" : "books"},
-                                        dataType: 'JSON',
+                                        dataType: 'json',
+                                        data: {},
                                        success:function(data) {
-                                          $("#msg").html(data.msg);
+                                        $.each(data.data, function(i, item)
+                                        {
+                                          $("#msg").append(item.id);
+                                        })
                                        },
                                        error: function (xhr, ajaxOptions, thrownError) {
                                         alert(xhr.status);
