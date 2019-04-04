@@ -15,33 +15,44 @@
 
                     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-                            <select>
-                            <option data-id="a" value="a">a</option>
-                            <option data-id="b" value="b">b</option>
-                            <option data-id="c" value="c">c</option>
-                            </select>
-
                             <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
                             <script type="text/javascript">
 
                             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-                            $('select').change(function(){
-                            var data = $(this).children('option:selected').data('id');
+                                $(document).ready(function(){
+                                  $("button").click(function(){
 
-                            $.ajax({
-                                url: '/api/books',
-                                type: 'POST',
-                                data: {_token: CSRF_TOKEN},
-                                dataType: 'JSON',
-                                success: function (data) {
-                                    console.log(data);
-                                }
-                            });
+                                    $.ajaxSetup({
+                                         headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                            }
+                                        });
+
+                                   $.ajax({
+                                        url: '/api/books',
+                                        type: 'POST',
+                                        data: {data : id},
+                                        dataType: 'JSON',
+                                       success:function(data) {
+                                          $("#msg").html(data.msg);
+                                       },
+                                       error: function (xhr, ajaxOptions, thrownError) {
+                                        alert(xhr.status);
+                                        alert(thrownError);
+                                       }
+                                    });;
+                                  });
+                                });
                             </script>
 
+                            <button>Get External Content</button>
 
+                               <body>
+                                      <div id = 'msg'>This message will be replaced using Ajax. 
+                                         Click the button to replace the message.</div>
+                              </body>
                     <div>
                 </div>
             </div>

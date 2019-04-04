@@ -16,13 +16,10 @@ class BookViewController extends Controller
 
         return view('bookview');
     }
-    public function postform()
+    public function postform(Request $request)
     {
-        $data = Input::get('data1');
-
-    //somecodes
-
-    return Response::json(array(
+        $data = $request->data;
+        return Response::json(array(
                     'success' => true,
                     'data'   => $data
                 )); 
