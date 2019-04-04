@@ -16,7 +16,8 @@ class AuthorController extends Controller
     }
 
     public function index() {
-    	return AuthorResource::collection(Author::all());
+        $authors = AuthorResource::collection(Author::all());
+    	return $authors;
     }
 
     public function show(Author $author)

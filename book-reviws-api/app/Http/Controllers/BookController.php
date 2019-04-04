@@ -11,7 +11,7 @@ class BookController extends Controller
     // this way users can use index() and show() methods without being authenticated
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['index', 'show']);
+        $this->middleware('auth:api')->except(['index', 'show', 'showImageByID', 'showByISBN']);
     }
 
     /**
@@ -21,7 +21,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        return BookResource::collection(Book::all());
+        $books = BookResource::collection(Book::all());
+        return $books;
     }
 
     /**
@@ -50,6 +51,28 @@ class BookController extends Controller
     public function show(Book $book)
     {
         return new BookResource($book);
+    }
+
+    public function showImageByID($book_id) {
+        $book = Book::findOrFail($book_id);
+
+        $imgref = "<img src=$book->image><br><p>$book->image</p>";
+        return $imgref;
+    }
+
+    public function showByISBN($isbn) {
+        $book = Book::where('isbn', $isbn)->first();
+
+        $book_attributes =
+            "<p>
+                Name: $book->name <br>
+                ISBN: $book->isbn <br>
+                Publication Year: $book->publication_year <br>
+                Publisher: $book->publisher <br>
+                <img src=$book->image> <br>
+            </p>";
+
+        return $book_attributes;
     }
 
     /**
