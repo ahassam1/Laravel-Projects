@@ -18,7 +18,7 @@ class BookViewController extends Controller
     }
     public function postform(Request $request)
     {
-        $data = $request->data;
+        $data = $request->id;
         return Response::json(array(
                     'success' => true,
                     'data'   => $data
