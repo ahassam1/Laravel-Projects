@@ -2,7 +2,7 @@
 <head>
 <script>
 function showBook() {
-	var book_id = document.getElementById("book_id").value;
+    var book_id = document.getElementById("book_id").value;
 
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -60,12 +60,12 @@ function showAllAuthors() {
 <body>
 
 <form>
-	<div class="field">
-	        <label for="keyword">Book ID:</label>
-	        <input type="number" id="book_id" name="book_id" value="1">
-	</div>
+    <div class="field">
+            <label for="keyword">Book ID:</label>
+            <input type="number" id="book_id" name="book_id" value="1">
+    </div>
 
-	<br>
+    <br>
 </form>
 
 <button onclick="showBook()"> Find Book </button>
