@@ -71,7 +71,7 @@
                                             
                                             
                                             $("#msg").append(item.id + item.name + 
-                                              + item.publication_year + item.publisher + item.subscription_status + "<img src=" + item.image + ">" + "<br>");
+                                              + item.publication_year + item.publisher + item.subscription_status + "<br>" + "<img src=" + item.image + ">" + "<br>");
 
 
                                         })
