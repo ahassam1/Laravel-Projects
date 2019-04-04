@@ -99,12 +99,13 @@
                                         dataType: 'json',
                                         data: {},
                                        success:function(data) {
+                                        $("#msg").empty();
                                         $.each(data.data, function(i, item)
                                         {
-                                          $("#msg").append(item.id);
-                                          $("#msg").append("<br>");
-                                          $("#msg").append(item.name);
-                                          $("#msg").append("<br>");
+                                            $("#msg").append(item.id);
+                                            $("#msg").append(" : ");
+                                            $("#msg").append(item.name);
+                                            $("#msg").append("<br>");
 
 
                                         })
