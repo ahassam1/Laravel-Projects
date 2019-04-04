@@ -102,10 +102,10 @@
                                         $("#msg").empty();
                                         $.each(data.data, function(i, item)
                                         {
-                                            $("#msg").append(item.id);
-                                            $("#msg").append(" : ");
-                                            $("#msg").append(item.name);
-                                            $("#msg").append("<br>");
+                                            
+                                            
+                                            $("#msg").append(item.id + item.name + 
+                                              + item.publication_year + item.publisher + item.subscription_status + "<img src=" + item.image + ">" + "<br>");
 
 
                                         })
