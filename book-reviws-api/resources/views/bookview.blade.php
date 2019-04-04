@@ -33,7 +33,7 @@
                                    $.ajax({
                                         url: '/api/books',
                                         type: 'POST',
-                                        data: {books:books},
+                                        data: { "books" : "books"},
                                         dataType: 'JSON',
                                        success:function(data) {
                                           $("#msg").html(data.msg);
