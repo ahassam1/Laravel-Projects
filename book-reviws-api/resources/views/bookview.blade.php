@@ -30,6 +30,11 @@
                                         $.each(data.data, function(i, item)
                                         {
                                           $("#msg").append(item.id);
+                                          $("#msg").append("<br>");
+                                          $("#msg").append(item.name);
+                                          $("#msg").append("<br>");
+
+
                                         })
                                        },
                                        error: function (xhr, ajaxOptions, thrownError) {
