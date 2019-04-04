@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('LibraryFind');
+    return view('bookview');
 });
 
 Route::get('/bookview', 'BookViewController@index');
