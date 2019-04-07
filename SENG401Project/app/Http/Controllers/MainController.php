@@ -14,8 +14,9 @@ class MainController extends Controller
 
     public function index()
     {
-        $video = Youtube::getVideoInfo('rie-hPVJ7Sw');
+        $video = Youtube::getVideoInfo('wXo24imR_54');
+        //dd($video);
 
-        return view("main", ["video"=>$video]);
+        return view("main", compact('video'));
     }
 }

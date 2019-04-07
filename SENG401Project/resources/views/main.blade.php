@@ -13,8 +13,7 @@
                 </div>
 
                 <div class="video">
-
-                    {{json_encode($video, true)}}
+                    <a href> https://www.youtube.com/watch?v={{ $video->id }} </a>
                 </div>
 
             </div>
