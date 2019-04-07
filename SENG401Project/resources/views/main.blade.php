@@ -14,7 +14,8 @@
 
                 <div class="video">
 
-                    {{json_encode($video, true)}}
+                    {{$video}}
+
                 </div>
 
             </div>

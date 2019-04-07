@@ -16,6 +16,6 @@ class MainController extends Controller
     {
         $video = Youtube::getVideoInfo('rie-hPVJ7Sw');
 
-        return view("main", ["video"=>$video]);
+        return view("main", ["video"=>json_encode($video, true)]);
     }
 }
