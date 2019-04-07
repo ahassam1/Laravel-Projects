@@ -13,9 +13,7 @@
                 </div>
 
                 <div class="video">
-
-                    {{$video}}
-
+                    <a href> https://www.youtube.com/watch?v={{ $video->id }} </a>
                 </div>
 
             </div>
