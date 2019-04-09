@@ -85,7 +85,6 @@
                 </div>
 
                 <div class="links">
-                    <a href="/main">Main Page</a>
                 </div>
 
             </div>
