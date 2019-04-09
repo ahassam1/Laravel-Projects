@@ -17,3 +17,24 @@ Route::get('/', function () {
 
 Route::get('/main', 'MainController@index');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('playlists', 'PlaylistController');
+Route::resource('/playlists/myplaylists/', 'PlaylistController@myplaylists');
+
+Route::resource('comments', 'CommentController');
+Route::resource('ratings', 'RatingController');
+Route::resource('users', 'UserController');
+
+/*
+Route::get('/routes', 'RoutesController@index');
+Route::get('/routes/create', 'RoutesController@create');
+Route::post('/routes', 'RoutesController@store');
+Route::get('/routes/{route}', 'RoutesController@show');
+Route::patch('/routes/{route}', 'RoutesController@update');
+Route::delete('/routes/{route}', 'RoutesController@destroy');
+Route::get('routes/{route}/edit', 'RoutesController@edit');
+*/
