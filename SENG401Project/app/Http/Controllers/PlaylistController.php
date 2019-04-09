@@ -18,6 +18,11 @@ class PlaylistController extends Controller
         return view ('playlists.playlist');
     }
 
+    public function browse()
+    {
+        return view ('playlists.browse');
+    }
+
     /**
      * Store a newly created resource in storage.
      * 
