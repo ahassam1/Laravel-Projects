@@ -22,11 +22,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/playlists/playlist', 'PlaylistController@index');
-
+Route::resource('users', 'UserController');
 Route::resource('comments', 'CommentController');
 Route::resource('ratings', 'RatingController');
 Route::resource('users', 'UserController');
+Route::resource('videos', 'VideoController');
 
 /*
 Route::get('/routes', 'RoutesController@index');

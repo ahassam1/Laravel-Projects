@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Playlist;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,16 +19,6 @@ class PlaylistController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('playlists.create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      * 
      * @return \Illuminate\Http\Response
@@ -36,7 +26,7 @@ class PlaylistController extends Controller
     public function store()
     {
         request()->validate([
-            'title' => ['required', 'min:3']
+            'playlist_title' => ['required', 'min:3']
         ]);
 
         Playlist::create(request(['title']));
