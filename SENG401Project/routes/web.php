@@ -20,10 +20,10 @@ Route::get('/main', 'MainController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 
 Route::resource('playlists', 'PlaylistController');
-Route::resource('/playlists/myplaylists/', 'PlaylistController@myplaylists');
+Route::resource('/playlists/playlist', 'PlaylistController@index');
 
 Route::resource('comments', 'CommentController');
 Route::resource('ratings', 'RatingController');
