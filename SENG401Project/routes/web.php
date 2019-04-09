@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/playlists/playlist', 'PlaylistController@index');
+Route::get('/playlists/browse', 'PlaylistController@browse');
 
 Route::resource('comments', 'CommentController');
 Route::resource('ratings', 'RatingController');

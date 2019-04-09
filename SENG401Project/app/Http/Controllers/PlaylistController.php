@@ -18,6 +18,11 @@ class PlaylistController extends Controller
         return view ('playlists.playlist');
     }
 
+    public function browse()
+    {
+        return view ('playlists.browse');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

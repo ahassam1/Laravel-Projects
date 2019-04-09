@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Playlist</div>
+                <div class="card-header">Browse</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,10 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in the Playlist section! <br>
-                    Welcome {{ Auth::user()->name }}! <br>
-                    Your ID on this system is {{ Auth::user()->id }}. <br>
-                    Your role is <span style="color:blue"> {{ Auth::user()->role }}.
+                    You are logged in the Browse section! <br>
 
                     <div>
                 </div>
