@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Playlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PlaylistController extends Controller
 {
@@ -29,13 +30,26 @@ class PlaylistController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        request()->validate([
+            'title' => ['required', 'min:3']
+        ]);
+
+        Playlist::create(request(['title']));
+        
+        /**
+        $playlist = new Playlist;
+        $playlist->title = request('title');
+        $playlist->user_id = Auth::user()->id;
+
+        $playlist->save();
+        **/
+
+        return redirect('/playlists/myplaylists/');
     }
 
     /**
