@@ -9,7 +9,7 @@ class Video extends Model
 	// inverse of protected
 	protected $guarded = [];
 
-    public function playlists() {
-    	return $this->hasMany(Playlist::class);
+    public function users() {
+    	return $this->hasMany(User::class);
     }
 }

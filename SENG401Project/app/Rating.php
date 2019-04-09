@@ -10,7 +10,7 @@ class Rating extends Model
 		return $this->belongsTo(User::class);
 	}
 
-    public function playlist() {
-    	return $this->belongsTo(Playlist::class);
+    public function video() {
+    	return $this->belongsTo(Video::class);
     }
 }

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('picture_url')->default('https://i.gyazo.com/ba03dd615aea7c3116e47b71d0b408aa.png');
             $table->string('role')->default('visitor');
+            $table->string('playlist_title');
             $table->rememberToken();
             $table->timestamps();
         });

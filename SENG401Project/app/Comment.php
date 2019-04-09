@@ -14,6 +14,6 @@ class Comment extends Model
 	}
 
     public function playlist() {
-    	return $this->belongsTo(Playlist::class);
+    	return $this->belongsTo(Video::class);
     }
 }
