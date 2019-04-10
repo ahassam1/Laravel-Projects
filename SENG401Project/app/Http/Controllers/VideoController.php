@@ -37,6 +37,7 @@ class VideoController extends Controller
     public function show($video_key)
     {
         $videoObject = Youtube::getVideoInfo($video_key);
+        
         $comments = DB::table('comments')
             ->where('video_key', $video_key)
             ->join('users', 'users.id', '=', 'comments.user_id')
@@ -64,12 +65,13 @@ class VideoController extends Controller
      * @param  \App\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Video $video_key)
+    public function destroy($video_key)
     {
-        $video = DB::table('videos')
-            ->where('video_key', $video_key)
-            ->first();
+        $videos = DB::table('videos')
+            ->where('video_key', '=', $video_key)
+            ->where('user_id', '=', Auth::user()->id)
+            ->delete();
 
-        $video->delete();
+        return redirect('/users/'. Auth::user()->id);
     }
 }

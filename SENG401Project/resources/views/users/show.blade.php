@@ -43,14 +43,21 @@
                         <iframe width="480" height="280" src="https://www.youtube.com/embed/{{ $video[0]->id }}"></iframe>
                         <div class="card-body">
                             <i>Viewed {{ $video[0]->statistics->viewCount }} times.</i> <br>
-                            <a href>
-                                <button></button>
-                            </a>
+                            
+                            <form method="POST" action="/videos/{{ $video[0]->id }}">
+                                @method('DELETE')
+                                @csrf
+                                <div class="field">
+                                    <div class="control">
+                                        <button type="submit" class="button is-link">Remove Video</button>
+                                    </div>
+                                </div>
+                            </form>
 
                             @foreach($video[1] as $comment)
-                            <div>
-                                <p> {{$comment->name}} </p> <br>
-                                <p> {{$comment->content}} </p> <br>
+                            <div class='card'>
+                                <div class='card-header'>{{ $comment->name }}</div>
+                                <div class='card-body'>{{ $comment->content }} </div>
                             </div>
                             @endforeach
                         </div>
