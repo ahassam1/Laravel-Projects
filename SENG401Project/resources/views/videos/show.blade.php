@@ -61,11 +61,6 @@
                 </div>
             @endif
 
-
-
-
-
-
             <!-- write a rating if user is registered -->
             @if (Auth::user())
             <div class="card">
@@ -97,10 +92,11 @@
             @endif
 
             <!-- display the average rating for this video -->
-            @if ($ratings->count())
+            @if ($ratings)
             <div class="card">
                 <div class="card-header">Comments from Your Fellow Humans</div>
                 <div class="card-body">
+                    {{ $ratings }}
                     @foreach ($comments as $comment)
                         <div class="card">
                             <div class="card-header">{{ $comment -> name }}</div>

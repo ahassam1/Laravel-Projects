@@ -40,12 +40,10 @@ class VideoController extends Controller
         $comments = DB::table('comments')
             ->where('video_key', $video_key)
             ->join('users', 'users.id', '=', 'comments.user_id')
-            ->get()->paginate(15);
+            ->get();
 
-        $sql = 'SELECT AVG(ratings), video_key FROM Ratings WHERE video_key = ' . $video_key . 'GROUP BY video_key ORDER BY AVG(ratings) ASC';
-        $rating = (DB::select($sql))[0];
-
-        return view('videos.show', compact('videoObject', 'comments', 'rating'));
+       $ratings = DB::Raw('SELECT AVG(value) FROM Ratings WHERE video_key ='. $video_key);
+        return view('videos.show', compact('videoObject', 'comments', 'ratings'));
     }
 
     /**
