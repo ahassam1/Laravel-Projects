@@ -22,13 +22,10 @@
                     <a href = "/users/{{ $user->id }}/edit">
                         <button>Edit Profile</button>
                     </a>
-                    
-                    <br>
-                    <form method = 'POST' action = "/users/{{ $user->id }}">
 
-                    Please Enter a Video URL to Add to Playlist (Yo Clean this Up):<br>
-                        <input type="text" name="firstname" value="Mickey">
-                    <br>
+                    <a href = "/users/{{ $user->id }}/add">
+                        <button>Add Video</button>
+                    </a>
 
 
                     </form>
