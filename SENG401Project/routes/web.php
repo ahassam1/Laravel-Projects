@@ -22,6 +22,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::post('/videos/addvideo', 'VideoController@store');
+
 Route::resource('users', 'UserController');
 Route::resource('comments', 'CommentController');
 Route::resource('ratings', 'RatingController');

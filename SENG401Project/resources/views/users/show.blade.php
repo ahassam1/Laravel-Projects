@@ -23,9 +23,14 @@
                         <button>Edit Profile</button>
                     </a>
 
-                    <a href = "/users/{{ $user->id }}/add">
-                        <button>Add Video</button>
-                    </a>
+                    <form method= 'POST' action="/videos/addvideo">
+                    @csrf
+
+                    Input Video URL:<br>
+                    <input type="text" name="firstname">
+                    <br><br>
+                    <input type="submit">
+                    </form>
 
 
                     </form>
