@@ -37,7 +37,10 @@ class VideoController extends Controller
     public function show($video_key)
     {
         $videoObject = Youtube::getVideoInfo($video_key);
-        $comments = DB::table('comments')->where('video_key', $video_key)->get();
+        $comments = DB::table('comments')
+            ->where('video_key', $video_key)
+            ->join('users', 'users.id', '=', 'comments.user_id')
+            ->get();
 
         return view('videos.show', compact('videoObject', 'comments'));
     }

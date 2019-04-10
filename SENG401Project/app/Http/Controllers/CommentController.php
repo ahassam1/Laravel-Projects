@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -12,13 +13,15 @@ class CommentController extends Controller
      */
     public function store($video_key)
     {
-        $attributes = request()->validate([
-            Auth::user()->id,
-            $video_key => ['required', 'min:2', 'max:255'],
+        request()->validate([
             'content' => ['required', 'min:10'],
         ]);
 
-        Comment::create($attributes);
+        Comment::create([
+            'user_id' => Auth::user()->id,
+            'video_key' => $video_key,
+            'content' => request('content'),
+        ]);
 
         return redirect('/videos/' . $video_key);
     }

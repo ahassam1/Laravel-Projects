@@ -33,13 +33,18 @@
                     </form>
                 </div>
 
-                @if ($videoapi)
-                <div>
+                @if (!empty($videoapi))
                     @foreach ($videoapi as $video)
-                        <iframe style="text-align:center;" width="700" height="360" src="https://www.youtube.com/embed/{{ $video->id }}"></iframe><br>
-                        Viewcount: {{ $video->statistics->viewCount }}>
+                    <div style="text-align:center; padding:10px;" class="card">
+                        <a href="/videos/{{ $video->id }}">
+                            <h2 class="card-header">{{ $video->snippet->title }}</h2>
+                        </a>
+                        <iframe width="480" height="280" src="https://www.youtube.com/embed/{{ $video->id }}"></iframe>
+                        <div class="card-body">
+                            <i>Viewed {{ $video->statistics->viewCount }} times.</i> <br>
+                        </div>
+                    </div>
                     @endforeach
-                </div>
                 @endif
 
             </div>

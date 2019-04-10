@@ -30,6 +30,8 @@ Route::resource('ratings', 'RatingController');
 Route::resource('users', 'UserController');
 Route::resource('videos', 'VideoController');
 
+Route::post('/comments/{video_key}', 'CommentController@store');
+
 /*
 Route::get('/routes', 'RoutesController@index');
 Route::get('/routes/create', 'RoutesController@create');
