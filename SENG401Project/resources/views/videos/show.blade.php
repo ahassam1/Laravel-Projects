@@ -13,6 +13,47 @@
                 </div>
             </div>
 
+            <!-- display the average rating for this video -->
+            @if ($ratings)
+            <div class="card">
+                <div class="card-header">AVERAGE RATING: {{ $ratings }}</div>
+                <div class="card-header">
+                    YOUTUBE LIKES: {{ $videoObject->statistics->likeCount }} <br>
+                    YOUTUBE DISLIKES: {{ $videoObject->statistics->dislikeCount }} <br>
+                </div>
+            </div>
+            @endif
+
+            <!-- write a rating if user is registered -->
+            @if (Auth::user())
+            <div class="card">
+                <div class="card-header">Ratings</div>
+                <div class="card-body">
+                    <form action="/rating/{{ $videoObject->id }}" method="POST">
+                        @csrf
+                        
+                        <div class="field">
+                            <div class="control">
+
+                                <select>
+                                  <option value="one">1</option>
+                                  <option value="two">2</option>
+                                  <option value="three">3</option>
+                                  <option value="four">4</option>
+                                  <option value="five">5</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type='submit'>Submit Rating</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @endif
+
             <!-- write a comment if user is registered -->
             @if (Auth::user())
             <div class="card">
@@ -61,51 +102,6 @@
                 </div>
             @endif
 
-            <!-- write a rating if user is registered -->
-            @if (Auth::user())
-            <div class="card">
-                <div class="card-header">Ratings</div>
-                <div class="card-body">
-                    <form action="/rating/{{ $videoObject->id }}" method="POST">
-                        @csrf
-                        
-                        <div class="field">
-                            <div class="control">
-
-                                <select>
-                                  <option value="one">1</option>
-                                  <option value="two">2</option>
-                                  <option value="three">3</option>
-                                  <option value="four">4</option>
-                                  <option value="five">5</option>
-                                </select>
-
-                            </div>
-                        </div>
-
-                        <div>
-                            <button type='submit'>Submit Rating</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            @endif
-
-            <!-- display the average rating for this video -->
-            @if ($ratings)
-            <div class="card">
-                <div class="card-header">Comments from Your Fellow Humans</div>
-                <div class="card-body">
-                    {{ $ratings }}
-                    @foreach ($comments as $comment)
-                        <div class="card">
-                            <div class="card-header">{{ $comment -> name }}</div>
-                            <div class="card-body">{{ $comment -> content }}</div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            @endif
         </div>
     </div>
 </div>
