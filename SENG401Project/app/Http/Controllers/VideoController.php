@@ -40,7 +40,7 @@ class VideoController extends Controller
         $comments = DB::table('comments')
             ->where('video_key', $video_key)
             ->join('users', 'users.id', '=', 'comments.user_id')
-            ->get();
+            ->get()->paginate(15);
 
         return view('videos.show', compact('videoObject', 'comments'));
     }
