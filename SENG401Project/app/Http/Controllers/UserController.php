@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Alaouy\Youtube\Facades\Youtube;
+use DB;
 
 class UserController extends Controller
 {
@@ -53,21 +54,17 @@ class UserController extends Controller
 
         foreach($videos as $video)
         {
-            $videoapi[$i] = Youtube::getVideoInfo($video->video_key);
+            $videoapi[$i][0] = Youtube::getVideoInfo($video->video_key);
+            $videoapi[$i][1] = DB::table('comments')
+            ->where('video_key', $video->video_key)
+            ->join('users', 'users.id', '=', 'comments.user_id')
+            ->get();
+
             $i++;
         }
 
-        /**
-        $videos = $user->videos();
-        $videoapis = array();
+        //dd($videoapi);
 
-        foreach($videos as $video) {
-            $videoapi = Youtube::getVideoInfo($video->video_key);
-            array_push($videoapis, $videoapi);
-        }
-
-        dd($videoapis);
-        **/
 
         return view('users.show', compact('user', 'videoapi'));
     }
