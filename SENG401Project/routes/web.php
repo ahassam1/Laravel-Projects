@@ -21,6 +21,7 @@ Route::get('/main', 'MainController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('users/browse', 'UserController@index');
 
 Route::post('/videos/addvideo', 'VideoController@store');
 

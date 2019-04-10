@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -59,6 +61,55 @@
                 </div>
             @endif
 
+
+
+
+
+
+            <!-- write a rating if user is registered -->
+            @if (Auth::user())
+            <div class="card">
+                <div class="card-header">Ratings</div>
+                <div class="card-body">
+                    <form action="/rating/{{ $videoObject->id }}" method="POST">
+                        @csrf
+                        
+                        <div class="field">
+                            <div class="control">
+
+                                <select>
+                                  <option value="one">1</option>
+                                  <option value="two">2</option>
+                                  <option value="three">3</option>
+                                  <option value="four">4</option>
+                                  <option value="five">5</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type='submit'>Submit Rating</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @endif
+
+            <!-- display the average rating for this video -->
+            @if ($ratings->count())
+            <div class="card">
+                <div class="card-header">Comments from Your Fellow Humans</div>
+                <div class="card-body">
+                    @foreach ($comments as $comment)
+                        <div class="card">
+                            <div class="card-header">{{ $comment -> name }}</div>
+                            <div class="card-body">{{ $comment -> content }}</div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            @endif
         </div>
     </div>
 </div>

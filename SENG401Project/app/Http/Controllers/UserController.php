@@ -16,6 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
+        $videos = DB::Table('Video');
+
         return view ('users.browse');
     }
 
