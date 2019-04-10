@@ -44,10 +44,10 @@
                         <div class="card-body">
                             <i>Viewed {{ $video[0]->statistics->viewCount }} times.</i> <br>
 
-                        @foreach($video[1] as $comments)
+                        @foreach($video[1] as $comment)
 
-                        <p> {{$comments->name}} </p> <br>
-                        <p> {{$comments->content}} </p>
+                        <p> {{$comment->name}} </p> <br>
+                        <p> {{$comment->content}} </p>
 
                         @endforeach
 
