@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Alaouy\Youtube\Facades\Youtube;
 
 class UserController extends Controller
 {
@@ -46,14 +47,29 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $videos = $user->videos;
+        $videoapi = array();
+        $i = 0;
 
-        $videos = $user->videos();
-
-        foreach($videos as $video) {
-            echo $video->video_key;
+        foreach($videos as $video)
+        {
+            $videoapi[$i] = Youtube::getVideoInfo($video->video_key);
+            $i++;
         }
 
-        return view('users.show', compact('user'));
+        /**
+        $videos = $user->videos();
+        $videoapis = array();
+
+        foreach($videos as $video) {
+            $videoapi = Youtube::getVideoInfo($video->video_key);
+            array_push($videoapis, $videoapi);
+        }
+
+        dd($videoapis);
+        **/
+
+        return view('users.show', compact('user', 'videoapi'));
     }
 
     /**

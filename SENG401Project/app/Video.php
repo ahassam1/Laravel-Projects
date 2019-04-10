@@ -8,6 +8,8 @@ class Video extends Model
 {
 	// inverse of protected
 	protected $guarded = [];
+	
+	protected $primaryKey = 'user_id';
 
     public function users() {
     	return $this->hasMany(User::class);

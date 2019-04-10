@@ -33,11 +33,11 @@
                     </form>
                 </div>
 
-                @if ($user->videos->count())
+                @if ($videoapi)
                 <div>
-                    @foreach ($videos as $video)
-                        $videoObject = 
-
+                    @foreach ($videoapi as $video)
+                        <iframe style="text-align:center;" width="700" height="360" src="https://www.youtube.com/embed/{{ $video->id }}"></iframe><br>
+                        Viewcount: {{ $video->statistics->viewCount }}>
                     @endforeach
                 </div>
                 @endif
