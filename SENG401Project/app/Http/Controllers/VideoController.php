@@ -42,19 +42,10 @@ class VideoController extends Controller
             ->join('users', 'users.id', '=', 'comments.user_id')
             ->get()->paginate(15);
 
-        return view('videos.show', compact('videoObject', 'comments'));
-    }
+        $sql = 'SELECT AVG(ratings), video_key FROM Ratings WHERE video_key = ' . $video_key . 'GROUP BY video_key ORDER BY AVG(ratings) ASC';
+        $rating = (DB::select($sql))[0];
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Video  $video
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Video $video)
-    {
-        //
+        return view('videos.show', compact('videoObject', 'comments', 'rating'));
     }
 
     /**
@@ -63,8 +54,12 @@ class VideoController extends Controller
      * @param  \App\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Video $video)
+    public function destroy(Video $video_key)
     {
-        //
+        $video = DB::table('videos')
+            ->where('video_key', $video_key)
+            ->first();
+
+        $video->delete();
     }
 }

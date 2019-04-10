@@ -43,15 +43,16 @@
                         <iframe width="480" height="280" src="https://www.youtube.com/embed/{{ $video[0]->id }}"></iframe>
                         <div class="card-body">
                             <i>Viewed {{ $video[0]->statistics->viewCount }} times.</i> <br>
+                            <a href>
+                                <button></button>
+                            </a>
 
-                        @foreach($video[1] as $comment)
-
-                        <p> {{$comment->name}} </p> <br>
-                        <p> {{$comment->content}} </p>
-
-                        @endforeach
-
-
+                            @foreach($video[1] as $comment)
+                            <div>
+                                <p> {{$comment->name}} </p> <br>
+                                <p> {{$comment->content}} </p> <br>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                     @endforeach
