@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Rating;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RatingController extends Controller
 {
@@ -33,9 +34,15 @@ class RatingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($video_key)
     {
-        //
+        Rating::create([
+            'user_id' => Auth::user()->id,
+            'video_key' => $video_key,
+            'value' => request('rating'),
+    ]);
+
+        return redirect('/videos/' . $video_key);
     }
 
     /**
