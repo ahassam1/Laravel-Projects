@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Video;
 use Illuminate\Http\Request;
 use Alaouy\Youtube\Facades\Youtube;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 class VideoController extends Controller
@@ -17,7 +18,14 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $video_key = Youtube::parseVidFromURL($request->input('url'));
+
+        Video::create([
+            'user_id' => Auth::user()->id,
+            'video_key' => $video_key,
+        ]);
+
+        return redirect('/users/'. Auth::user()->id);
     }
 
     /**

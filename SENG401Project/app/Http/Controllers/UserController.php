@@ -46,6 +46,13 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+
+        $videos = $user->videos();
+
+        foreach($videos as $video) {
+            echo $video->video_key;
+        }
+
         return view('users.show', compact('user'));
     }
 

@@ -14,8 +14,9 @@ class CreateVideosTable extends Migration
     public function up()
     {
         Schema::create('videos', function (Blueprint $table) {
-            $table->bigInteger('playlist_id');
+            $table->bigInteger('user_id');
             $table->string('video_key');
+            $table->timestamps();
         });
     }
 

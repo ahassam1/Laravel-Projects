@@ -18,6 +18,7 @@ class CreateRatingsTable extends Migration
             $table->bigInteger('user_id');
             $table->string('video_key');
             $table->integer('value');
+            $table->timestamps();
         });
     }
 
