@@ -32,6 +32,8 @@ Route::resource('users', 'UserController');
 Route::resource('videos', 'VideoController');
 
 Route::post('/comments/{video_key}', 'CommentController@store');
+Route::post('/ratings/{video_key}', 'RatingController@store');
+
 
 /*
 Route::get('/routes', 'RoutesController@index');

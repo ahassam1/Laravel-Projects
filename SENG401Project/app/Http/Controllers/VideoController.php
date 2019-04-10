@@ -53,7 +53,10 @@ class VideoController extends Controller
             $sum += $rating->value;
             $i++;
         }
+        if(!$i == 0)
         $ratings = (float) $sum/$i;
+        else
+        $ratings = null; 
 
         return view('videos.show', compact('videoObject', 'comments', 'ratings'));
     }
