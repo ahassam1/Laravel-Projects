@@ -42,12 +42,19 @@ class VideoController extends Controller
             ->join('users', 'users.id', '=', 'comments.user_id')
             ->get();
 
-       $ratings = DB::table('ratings')
-       ->select('value')
-       ->where('video_key', $video_key)
-       ->get();
+        $ratings = DB::table('ratings')
+            ->select('value')
+            ->where('video_key', $video_key)
+            ->get();
 
-       //dd($ratings);
+        dd($ratings);
+
+       //$sql = 'SELECT AVG(ratings), video_key FROM Ratings WHERE video_key = ' . $video_key . 'GROUP BY video_key ORDER BY AVG(ratings) ASC';
+        $sql = 'SELECT AVG(value) FROM Ratings WHERE video_key = ' . $video_key;
+        $avgrating = (DB::select($sql))[0];
+        dd($avgrating);
+
+       //
 
         return view('videos.show', compact('videoObject', 'comments', 'ratings'));
     }
