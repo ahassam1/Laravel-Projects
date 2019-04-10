@@ -22,8 +22,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/playlists/playlist', 'PlaylistController@index');
-Route::get('/playlists/browse', 'PlaylistController@browse');
+Route::post('/videos/addvideo', 'VideoController@store');
 
 Route::resource('users', 'UserController');
 Route::resource('comments', 'CommentController');

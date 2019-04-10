@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view ('users.browse');
     }
 
     /**
@@ -55,9 +55,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -67,9 +67,23 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->name = $request->input('name');
+        $user->playlist_title = $request->input('playlist_title');
+
+        if($request->input('picture_url') == null)
+        {
+
+        }
+        else
+        {
+            $user->picture_url = $request->input('picture_url');
+        }
+
+        $user->save();
+
+        return redirect('/users/' . $user->id);
     }
 
     /**

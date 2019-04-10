@@ -26,11 +26,11 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <a class="navbar-brand" href="/playlists/browse">
+                <a class="navbar-brand" href="/users.browse">
                     Browse Playlists
                 </a>
                 @if(Auth::user())
-                <a class="navbar-brand" href="/playlists/playlist">
+                <a class="navbar-brand" href="/users/{{ Auth::user()->id }}">
                     My Playlists
                 </a>
                 @endif
