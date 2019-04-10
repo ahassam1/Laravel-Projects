@@ -34,14 +34,24 @@
                 </div>
 
                 @if (!empty($videoapi))
-                    @foreach ($videoapi[0] as $video)
+                    @foreach ($videoapi as $video)
                     <div style="text-align:center; padding:10px;" class="card">
                         <a href="/videos/{{ $video[0]->id }}">
                             <h2 class="card-header">{{ $video[0]->snippet->title }}</h2>
                         </a>
-                        <iframe width="480" height="280" src="https://www.youtube.com/embed/{{ $video->id }}"></iframe>
+
+                        <iframe width="480" height="280" src="https://www.youtube.com/embed/{{ $video[0]->id }}"></iframe>
                         <div class="card-body">
-                            <i>Viewed {{ $video->statistics->viewCount }} times.</i> <br>
+                            <i>Viewed {{ $video[0]->statistics->viewCount }} times.</i> <br>
+
+                        @foreach($video[1] as $comments)
+
+                        <p> {{$comments->name}} </p> <br>
+                        <p> {{$comments->content}} </p>
+
+                        @endforeach
+
+
                         </div>
                     </div>
                     @endforeach
