@@ -4,29 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Video;
 use Illuminate\Http\Request;
+use Alaouy\Youtube\Facades\Youtube;
+use DB;
 
 class VideoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -44,20 +26,12 @@ class VideoController extends Controller
      * @param  \App\Video  $video
      * @return \Illuminate\Http\Response
      */
-    public function show(Video $video)
+    public function show($video_key)
     {
-        return view('videos.show', compact('video'));
-    }
+        $videoObject = Youtube::getVideoInfo($video_key);
+        $comments = DB::table('comments')->where('video_key', $video_key)->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Video  $video
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Video $video)
-    {
-        //
+        return view('videos.show', compact('videoObject', 'comments'));
     }
 
     /**
