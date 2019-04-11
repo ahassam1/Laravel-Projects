@@ -13,14 +13,15 @@
                 </div>
             </div>
 
-            <!-- display the average rating for this video -->
-            @if ($ratings)
-            <div class="card">
-                <div class="card-header">AVERAGE RATING: {{ $ratings }}</div>
                 <div class="card-header">
                     YOUTUBE LIKES: {{ $videoObject->statistics->likeCount }} <br>
                     YOUTUBE DISLIKES: {{ $videoObject->statistics->dislikeCount }} <br>
                 </div>
+
+            <!-- display the average rating for this video -->
+            @if ($ratings)
+            <div class="card">
+                <div class="card-header">AVERAGE RATING: {{ $ratings }}</div>
             </div>
             @endif
 
