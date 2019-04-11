@@ -16,7 +16,12 @@
             <!-- display the average rating for this video -->
             @if ($ratings)
             <div class="card">
-                <div class="card-header">AVERAGE RATING: {{ $ratings }}</div>
+                <div class="card-header">
+                    AVERAGE RATING:
+                    @for ($i = 0; $i < $ratings; $i++)
+                        <span class="fa fa-star checked"></span>
+                    @endfor
+                </div>
                 <div class="card-header">
                     YOUTUBE LIKES: {{ $videoObject->statistics->likeCount }} <br>
                     YOUTUBE DISLIKES: {{ $videoObject->statistics->dislikeCount }} <br>
