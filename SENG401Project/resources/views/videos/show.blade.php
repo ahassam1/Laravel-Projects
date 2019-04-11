@@ -18,14 +18,26 @@
             <div class="card">
                 <div class="card-header">
                     AVERAGE RATING:
+                    @php $i;
                     @for ($i = 0; $i < $ratings; $i++)
                         <span class="fa fa-star checked"></span>
                     @endfor
+                    
+                    @for ($j = $i; $j < 5; $j++)
+                        <span class="fa fa-star"></span>
+                    @endfor
+
                 </div>
                 <div class="card-header">
                     YOUTUBE LIKES: {{ $videoObject->statistics->likeCount }} <br>
                     YOUTUBE DISLIKES: {{ $videoObject->statistics->dislikeCount }} <br>
                 </div>
+            @else
+                @for ($i = 0; $i < 5; $i++)
+                    <span class="fa fa-star"></span>
+                @endfor
+            @endif
+
 
             <!-- display the average rating for this video -->
             @if ($ratings)
