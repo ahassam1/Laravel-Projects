@@ -26,6 +26,11 @@
                     YOUTUBE LIKES: {{ $videoObject->statistics->likeCount }} <br>
                     YOUTUBE DISLIKES: {{ $videoObject->statistics->dislikeCount }} <br>
                 </div>
+
+            <!-- display the average rating for this video -->
+            @if ($ratings)
+            <div class="card">
+                <div class="card-header">AVERAGE RATING: {{ $ratings }}</div>
             </div>
             @endif
 
@@ -36,7 +41,7 @@
                 <div class="card-body">
                     <form action="/ratings/{{ $videoObject->id }}" method="POST">
                         @csrf
-                        
+
                         <div class="field">
                             <div class="control">
 
@@ -66,7 +71,7 @@
                 <div class="card-body">
                     <form action="/comments/{{ $videoObject->id }}" method="POST">
                         @csrf
-                        
+
                         <div class="field">
                             <div class="control">
                                 <input type="textarea" name="content" placeholder="Say something nice...">
